@@ -1,5 +1,5 @@
 # Site settings
-baseurl = "http://imjsilva.com/"
+baseurl = "https://jsilva.github.io/"
 languageCode = "en-us"
 title = "João Da Silva"
 theme = "hugo-me-theme"
@@ -22,14 +22,14 @@ category = "categories"
     # To provide some metadata for search engines feel free to add a few
     # information about you and your website.
     author = "João Da Silva"
-    description = "Softwre Developer"
+    description = "Software Developer"
     keywords = "scala, akka, playframework, finagle, ansible, spark, neo4j, cassandra, kafka"
     
     # Sidebar
     # Main settings
     [params.sidebar]
         name = "João Da Silva"
-        description = "Software Developer"
+        description = "Software Developer, Designer, Capoeirista, DJ and Music Producer."
         avatar = "http://2.gravatar.com/avatar/b466034505109f11935c077faa605d7c?s=200&d=mm&r=g"
     
     # Navigation
@@ -77,9 +77,19 @@ category = "categories"
     
     # About page
     [params.about]
-        title = "Hello, It's Me!"
-        intro = "Welcome to my page!"
-        text = "I am a simple responsive theme for [Hugo](http://gohugo.io) based on [Read Only template](http://html5up.net/read-only) by HTML5UP. To install Me just run inside your Hugo project:\n\n    $ mkdir themes\n    $ cd themes\n    $ git clone https://github.com/aerohub/hugo-me-theme.git hugo-me-theme\n\n See [README](//github.com/aerohub/hugo-me-theme) for more information."
+        title = "Joao Da Silva"
+        intro = "Software Developer, Designer, Capoeirista, DJ and Music Producer. Creativity is my search."
+        text = """
+Software Developer and Team Lead. 
+
+I have wide experience in frontend, backend and devops development for more than seven years in middle and long-term projects. My primary expertise includes a number of industry-proof technologies around the Scala ecosystem and the Lightbend Reactive platform  such as Akka, Playframework, Apache Spark.
+
+I also have  good skills  in distributed systems development, computer vision, natural language processing, graph databases  and Ansible for systems provision. 
+
+Looking for remote software development contract work. I can provide you with my personal services, or as a Lead of the team of my assistants from Czech Republic. 
+
+[Hire me](/contact)
+                """
 
     # # Skills page
     # [params.skills]
@@ -113,62 +123,62 @@ category = "categories"
             
     # Works page
     [params.works]
-        title ="Few Works Made by Me"
-        intro = "Let Me present here its color schemes"
+        title ="Projects"
+        intro = ""
         
-        [[params.works.show]]
-            title = "Red Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "red.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Red Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "red.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
             
-        [[params.works.show]]
-            title = "Orange Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "orange.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Orange Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "orange.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
             
-        [[params.works.show]]
-            title = "Green Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "green.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Green Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "green.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
 
-        [[params.works.show]]
-            title = "Yellow Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "yellow.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Yellow Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "yellow.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
         
-        [[params.works.show]]
-            title = "Blue Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "blue.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Blue Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "blue.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
             
-        [[params.works.show]]
-            title = "Magenta Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "magenta.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Magenta Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "magenta.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
             
-        [[params.works.show]]
-            title = "Cyan Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "cyan.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Cyan Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "cyan.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
 
-        [[params.works.show]]
-            title = "Brown Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "brown.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Brown Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "brown.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
 
-        [[params.works.show]]
-            title = "Gray Color Scheme"
-            description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
-            image = "gray.png"
-            link = "https://github.com/aerohub/hugo-me-theme"
+        # [[params.works.show]]
+        #     title = "Gray Color Scheme"
+        #     description = "Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet."
+        #     image = "gray.png"
+        #     link = "https://github.com/aerohub/hugo-me-theme"
     
     # Contact page
     
@@ -188,7 +198,8 @@ category = "categories"
     
     [params.contact]
         title ="Hire Me"
-        intro = "Since this theme is static, the contact form uses [Formspree](http://www.formspree.io) as a proxy."
+        intro = "Looking forward to connect with you."
+        # Since this theme is static, the contact form uses [Formspree](http://www.formspree.io) as a proxy
         buttonText = "Send Message"
         resetText = "Reset Form"
         
