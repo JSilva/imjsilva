@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<html>
+	
+	{{ partial "head.html" . }}
+	
+	<body>
+
+		<!-- Header -->
+			
+			{{ partial "sidebar.html" . }}
+			
+		<!-- Wrapper -->
+			<div id="wrapper">
+		<!-- Main -->
+			<div id="main">
+
+				<section>
+					<div class="container">
+						<header class="major">
+							<h2>{{ .Site.Params.error.title }}</h2>
+							<p>{{ with .Site.Params.error.intro }}{{ . | markdownify }}{{ end }}</p>
+						</header>
+						{{ with .Site.Params.error.text }}{{ . | markdownify }}{{ end }}
+					</div>
+				</section>
+
+			</div>
+
+			{{ partial "footer.html" . }}
+
+			</div>
+
+		<!-- Scripts -->
+		{{ partial "scripts.html" . }}
+
+	</body>
+</html>

@@ -1,0 +1,13 @@
+	<head>
+		<title>{{ .Title }} - {{ .Site.Title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="{{ with .Site.Params.description }}{{ . }}{{ end }}">
+        <meta name="author" content="{{ with .Site.Params.author }}{{ . }}{{ end }}">
+		<meta name="keywords" content="{{ with .Site.Params.keywords }}{{ . }}{{ end }}">
+        <!--[if lte IE 8]><script src="{{ .Site.BaseURL }}assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{{ .Site.BaseURL }}assets/css/main-{{ .Site.Params.colorscheme }}.css" />
+		<!--[if lte IE 8]><link rel="{{ .Site.BaseURL }}stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<link rel="icon" type="image/ico" href="{{ .Site.BaseURL }}images/favicon-16x16.ico" sizes="16x16" />
+		{{ template "_internal/google_analytics.html" . }}
+	</head>

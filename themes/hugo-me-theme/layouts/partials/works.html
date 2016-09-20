@@ -1,0 +1,18 @@
+							<section>
+								<div class="container">
+									<header class="major">
+									<h2>{{ .Site.Params.works.title }}</h2>
+									<p>{{ with .Site.Params.works.intro }}{{ . | markdownify }}{{ end }}</p>
+									<div class="features">
+										{{ range .Site.Params.works.show }}
+										<article>
+											<a href="{{ .link }}" class="image"><img src="{{ .Site.BaseURL }}/images/{{ .image }}" alt="" /></a>
+											<div class="inner">
+												<h4>{{ .title }}</h4>
+												<p>{{ with .description }}{{ . | markdownify }}{{ end }}</p>
+											</div>
+										</article>
+										{{ end }}
+									</div>
+								</div>
+							</section>

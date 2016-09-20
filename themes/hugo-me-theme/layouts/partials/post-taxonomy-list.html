@@ -1,0 +1,10 @@
+							<ul class="actions small">
+							{{ if isset .Params "categories" }}
+                                {{ $baseUrl := .Site.BaseURL }}
+                                {{ range .Params.categories }}<li><a href="{{ $baseUrl }}categories/{{ . | urlize }}" class="button special small icon fa-sitemap">{{ . }}</a></li>{{ end }}
+                            {{ end }}
+							{{ if isset .Params "tags" }}
+                                {{ $baseUrl := .Site.BaseURL }}
+                                {{ range .Params.tags }}<li><a href="{{ $baseUrl }}tags/{{ . | urlize }}" class="button small icon fa-tag">{{ . }}</a></li>{{ end }}
+                            {{ end }}
+							</ul>
