@@ -1,0 +1,12 @@
+							<section>
+								<div class="container">
+									<header class="major">
+									<h2>{{ with .Site.Params.skills.title }}{{ . | markdownify }}{{ end }}</h2>
+									<p>{{ with .Site.Params.skills.intro }}{{ . | markdownify }}{{ end }}</p>
+									<ul class="feature-icons">
+										{{ range .Site.Params.skills.list }}
+										<li class="{{ .icon }}">{{ .description }}</li>
+										{{ end }}
+									</ul>
+								</div>
+							</section>

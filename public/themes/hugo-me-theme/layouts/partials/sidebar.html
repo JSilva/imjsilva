@@ -1,0 +1,21 @@
+			<section id="header">
+				<header>
+					<span class="image avatar"><a href="{{ .Site.BaseURL }}"><img src="{{ .Site.BaseURL }}images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="{{ .Site.BaseURL }}">{{ with .Site.Params.sidebar.name }}{{ . | markdownify }}{{ end }}</a></h1>
+					<p>{{ with .Site.Params.sidebar.description }}{{ . | markdownify }}{{ end }}</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						{{ range .Site.Params.sidebar.navigation }}
+							<li><a href="{{ .link }}"><span class="label">{{ .label }}</span></a></li>
+						{{ end }}
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						{{ range .Site.Params.sidebar.social }}
+							<li><a href="{{ .link }}" class="icon {{ .icon }}"><span class="label">{{ .label }}</span></a></li>
+						{{ end }}
+					</ul>
+				</footer>
+			</section>
