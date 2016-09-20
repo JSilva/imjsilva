@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on João Da Silva</title>
+    <link>https://jsilva.github.io/about/</link>
+    <description>Recent content in Abouts on João Da Silva</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Sep 2016 18:14:22 +0200</lastBuildDate>
+    <atom:link href="https://jsilva.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About Me</title>
+      <link>https://jsilva.github.io/about/</link>
+      <pubDate>Thu, 15 Sep 2016 18:14:22 +0200</pubDate>
+      
+      <guid>https://jsilva.github.io/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
+
+&lt;p&gt;Backend Software Developer and Team Lead.&lt;/p&gt;
+
+&lt;p&gt;I have wide experience in frontend, backend and devops development for more than seven years in middle and long-term projects. My primary expertise includes a number of industry-proof technologies around the Scala ecosystem  and the Lightbend Reactive platform  such as Akka, Playframework, Apache Spark.&lt;/p&gt;
+
+&lt;p&gt;I also have  good skills  in distributed systems development, computer vision, natural language processing, graph databases  and Ansible for systems provision.&lt;/p&gt;
+
+&lt;p&gt;Looking for remote software development contract work. I can provide you with my personal services, or as a Lead of the team of my assistants from Czech Republic.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jsilva.github.io/contact&#34;&gt;Hire me&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

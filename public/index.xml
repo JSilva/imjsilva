@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>João Da Silva</title>
+    <link>https://jsilva.github.io/</link>
+    <description>Recent content on João Da Silva</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Sep 2016 18:16:24 +0200</lastBuildDate>
+    <atom:link href="https://jsilva.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>akka notes</title>
+      <link>https://jsilva.github.io/blog/akka-notes/</link>
+      <pubDate>Mon, 19 Sep 2016 18:16:24 +0200</pubDate>
+      
+      <guid>https://jsilva.github.io/blog/akka-notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;akka-notes&#34;&gt;Akka notes&lt;/h1&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>https://jsilva.github.io/about/</link>
+      <pubDate>Thu, 15 Sep 2016 18:14:22 +0200</pubDate>
+      
+      <guid>https://jsilva.github.io/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-me&#34;&gt;About Me&lt;/h1&gt;
+
+&lt;p&gt;Backend Software Developer and Team Lead.&lt;/p&gt;
+
+&lt;p&gt;I have wide experience in frontend, backend and devops development for more than seven years in middle and long-term projects. My primary expertise includes a number of industry-proof technologies around the Scala ecosystem  and the Lightbend Reactive platform  such as Akka, Playframework, Apache Spark.&lt;/p&gt;
+
+&lt;p&gt;I also have  good skills  in distributed systems development, computer vision, natural language processing, graph databases  and Ansible for systems provision.&lt;/p&gt;
+
+&lt;p&gt;Looking for remote software development contract work. I can provide you with my personal services, or as a Lead of the team of my assistants from Czech Republic.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://jsilva.github.io/contact&#34;&gt;Hire me&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Projects</title>
+      <link>https://jsilva.github.io/works/</link>
+      <pubDate>Thu, 15 Sep 2016 18:14:22 +0200</pubDate>
+      
+      <guid>https://jsilva.github.io/works/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Scala Type covariance and contravariance</title>
+      <link>https://jsilva.github.io/blog/scala-type-covariance-and-contravariance/</link>
+      <pubDate>Tue, 19 Jul 2016 18:16:24 +0200</pubDate>
+      
+      <guid>https://jsilva.github.io/blog/scala-type-covariance-and-contravariance/</guid>
+      <description>
+
+&lt;h2 id=&#34;type-covariance-and-contravariance&#34;&gt;Type Covariance and Contravariance&lt;/h2&gt;
+
+&lt;p&gt;Quoting from &lt;a href=&#34;http://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29&#34;&gt;wikipedia&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Within the type system of a programming language, covariance and contravariance refers to the ordering of types from narrower to wider and their interchangeability or equivalence in certain situations (such as parameters, generics, and return types).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;covariant: converting from wider (double) to narrower (float).&lt;/li&gt;
+&lt;li&gt;contravariant: converting from narrower (float) to wider (double).&lt;/li&gt;
+&lt;li&gt;invariant: Not able to convert.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The ability to send a collection of subclass instances to a collection of base class is called covariance&lt;/p&gt;
+
+&lt;p&gt;The ability to send a collection of superclass instances to a collection of subclass is called contravariance&lt;/p&gt;
+
+&lt;p&gt;By default scala does not allow covariance and contravariance, but there are some good use cases where you might want to use a derived type as a super type.&lt;/p&gt;
+
+&lt;p&gt;Lets prepare some base code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Person(val name: String) {
+ override def toString = name
+}
+
+class Employee(override val name: String) extends Person(name)
+
+val empList = List(new Employee(&amp;quot;Joao&amp;quot;), new Employee(&amp;quot;Andre&amp;quot;))
+
+val peopleList = List(new Person(&amp;quot;Martin&amp;quot;), new Person(&amp;quot;Jonas&amp;quot;))
+
+def sayHi(people:List[Employee]) = people.map { println _ }
+
+sayHi(empList)
+
+sayHi(peopleList) // compilation ERROR
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The error is pretty obvious we can’t send a List[Person] as the sayHi function expects a List[Employee] as it’s formal parameter, and here is where covariancecomes into place.&lt;/p&gt;
+
+&lt;h3 id=&#34;covariance&#34;&gt;Covariance&lt;/h3&gt;
+
+&lt;p&gt;To solve the above compilation error we have to let scala compiler know that it’s ok to treat a Person as an Employee, we
+do that as follows:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def sayHi[T &amp;lt;: Person](people: List[T]) = people.map { println _ }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;sayHi has now a special syntax [T &amp;lt;: Person]. This syntax indicates that T sould be of Type Person or any class that derives from Person, which means that know we can have something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sayHi(empList) sayHi(peopleList)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You can also indicate covariance at the class level by making the parameterized type+T instead off T.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class SomeCollection[+T]
+
+var lst1 = new SomeCollection[Employee]
+
+var lst2: SomeCollection[Person] = lst1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The above snippet is possible since Employee is a subclass of Person&lt;/p&gt;
+
+&lt;h3 id=&#34;contravariance&#34;&gt;Contravariance&lt;/h3&gt;
+
+&lt;p&gt;Contravariance is the literally the opposite of Covariance, Lets imagine we want to add Employee to Person, as you can see the relationship is from subclass to superclass.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def appendToPerson[T, D &amp;lt;: T](employees: List[T], people: List[D]) = people ++ employees
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With the syntax [T, D &amp;lt;: T], we have constrained the parameterized type D to be of the type T or a super type of T, so basically T sets the lower level in the Type hierarchy for type D. In our example the type D (Person) can be of type T (Employee) or its superclass.&lt;/p&gt;
+
+&lt;p&gt;Scala also has class level support for setting contravariance and as you might guess the parameterized type is -T&lt;/p&gt;
+
+&lt;h3 id=&#34;summary&#34;&gt;Summary&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A class C[T], when a method accepts only C[T] is invariant&lt;/li&gt;
+&lt;li&gt;A class C[+T], when a method accepts C[T] i can also get any of it’s dervatives&lt;/li&gt;
+&lt;li&gt;A class C[+-T], when a method accepts C[T] i can also get any of it’s super classes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Function Type bounds:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def fun[T &amp;lt;: A](arg:T) // covariant, arg must be of type T or any of it&#39;s subclasses
+
+def fun[T &amp;gt;: A](arg:T) // Contravariant, arg must be of type T or any of it&#39;s super class
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://jsilva.github.io/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsilva.github.io/contact/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>What I Can Do</title>
+      <link>https://jsilva.github.io/skills/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://jsilva.github.io/skills/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

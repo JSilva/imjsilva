@@ -1,0 +1,205 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<html>
+	
+		<head>
+		<title>Scala Type covariance and contravariance - João Da Silva</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Software Developer">
+        <meta name="author" content="João Da Silva">
+		<meta name="keywords" content="scala, akka, playframework, finagle, ansible, spark, neo4j, cassandra, kafka">
+        
+		<link rel="stylesheet" href="https://jsilva.github.io/assets/css/main-red.css" />
+		
+		<link rel="icon" type="image/ico" href="https://jsilva.github.io/images/favicon-16x16.ico" sizes="16x16" />
+		
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXXXX-Y', 'auto');
+ga('send', 'pageview');
+</script>
+
+	</head>
+
+	
+	<body>
+
+		
+			
+						<section id="header">
+				<header>
+					<span class="image avatar"><a href="https://jsilva.github.io/"><img src="https://jsilva.github.io/images/avatar.jpg" alt="" /></a></span>
+					<h1 id="logo"><a href="https://jsilva.github.io/">João Da Silva</a></h1>
+					<p>Software Developer, Designer, Capoeirista, DJ and Music Producer.</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						
+							<li><a href="/about"><span class="label">About</span></a></li>
+						
+							<li><a href="/contact"><span class="label">Hire Me</span></a></li>
+						
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						
+							<li><a href="https://github.com/JSilva" class="icon fa-github"><span class="label">Github</span></a></li>
+						
+					</ul>
+				</footer>
+			</section>
+
+			
+		
+			<div id="wrapper">
+		
+			<div id="main">
+						
+				<section>
+					<div class="container">
+						<header class="major">
+							<h2>Scala Type covariance and contravariance</h2>
+							<p>19 July 2016</p>
+														<ul class="actions small">
+							
+                                
+                                <li><a href="https://jsilva.github.io/categories/scala" class="button special small icon fa-sitemap">scala</a></li>
+                            
+							
+							</ul>
+						</header>
+						
+
+<h2 id="type-covariance-and-contravariance">Type Covariance and Contravariance</h2>
+
+<p>Quoting from <a href="http://en.wikipedia.org/wiki/Covariance_and_contravariance_%28computer_science%29">wikipedia</a></p>
+
+<blockquote>
+<p>Within the type system of a programming language, covariance and contravariance refers to the ordering of types from narrower to wider and their interchangeability or equivalence in certain situations (such as parameters, generics, and return types).</p>
+</blockquote>
+
+<ul>
+<li>covariant: converting from wider (double) to narrower (float).</li>
+<li>contravariant: converting from narrower (float) to wider (double).</li>
+<li>invariant: Not able to convert.</li>
+</ul>
+
+<p>The ability to send a collection of subclass instances to a collection of base class is called covariance</p>
+
+<p>The ability to send a collection of superclass instances to a collection of subclass is called contravariance</p>
+
+<p>By default scala does not allow covariance and contravariance, but there are some good use cases where you might want to use a derived type as a super type.</p>
+
+<p>Lets prepare some base code:</p>
+
+<pre><code>class Person(val name: String) {
+ override def toString = name
+}
+
+class Employee(override val name: String) extends Person(name)
+
+val empList = List(new Employee(&quot;Joao&quot;), new Employee(&quot;Andre&quot;))
+
+val peopleList = List(new Person(&quot;Martin&quot;), new Person(&quot;Jonas&quot;))
+
+def sayHi(people:List[Employee]) = people.map { println _ }
+
+sayHi(empList)
+
+sayHi(peopleList) // compilation ERROR
+</code></pre>
+
+<p>The error is pretty obvious we can’t send a List[Person] as the sayHi function expects a List[Employee] as it’s formal parameter, and here is where covariancecomes into place.</p>
+
+<h3 id="covariance">Covariance</h3>
+
+<p>To solve the above compilation error we have to let scala compiler know that it’s ok to treat a Person as an Employee, we
+do that as follows:</p>
+
+<pre><code>def sayHi[T &lt;: Person](people: List[T]) = people.map { println _ }
+</code></pre>
+
+<p>sayHi has now a special syntax [T &lt;: Person]. This syntax indicates that T sould be of Type Person or any class that derives from Person, which means that know we can have something like:</p>
+
+<pre><code>sayHi(empList) sayHi(peopleList)
+</code></pre>
+
+<p>You can also indicate covariance at the class level by making the parameterized type+T instead off T.</p>
+
+<pre><code>class SomeCollection[+T]
+
+var lst1 = new SomeCollection[Employee]
+
+var lst2: SomeCollection[Person] = lst1
+</code></pre>
+
+<p>The above snippet is possible since Employee is a subclass of Person</p>
+
+<h3 id="contravariance">Contravariance</h3>
+
+<p>Contravariance is the literally the opposite of Covariance, Lets imagine we want to add Employee to Person, as you can see the relationship is from subclass to superclass.</p>
+
+<pre><code>def appendToPerson[T, D &lt;: T](employees: List[T], people: List[D]) = people ++ employees
+</code></pre>
+
+<p>With the syntax [T, D &lt;: T], we have constrained the parameterized type D to be of the type T or a super type of T, so basically T sets the lower level in the Type hierarchy for type D. In our example the type D (Person) can be of type T (Employee) or its superclass.</p>
+
+<p>Scala also has class level support for setting contravariance and as you might guess the parameterized type is -T</p>
+
+<h3 id="summary">Summary</h3>
+
+<ul>
+<li>A class C[T], when a method accepts only C[T] is invariant</li>
+<li>A class C[+T], when a method accepts C[T] i can also get any of it’s dervatives</li>
+<li>A class C[+-T], when a method accepts C[T] i can also get any of it’s super classes</li>
+</ul>
+
+<p>Function Type bounds:</p>
+
+<pre><code>def fun[T &lt;: A](arg:T) // covariant, arg must be of type T or any of it's subclasses
+
+def fun[T &gt;: A](arg:T) // Contravariant, arg must be of type T or any of it's super class
+</code></pre>
+
+						
+						<ul class="actions">
+							
+								<li><a href="https://jsilva.github.io/contact/" class="button special">Older</a></li>
+							
+							
+								<li><a href="https://jsilva.github.io/works/" class="button special">Newer</a></li>
+							
+						</ul>
+						
+					</div>
+				</section>
+				
+			</div>
+
+								<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>2016 &copy; All rights reserved.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		
+					<script src="https://jsilva.github.io/assets/js/jquery.min.js"></script>
+			<script src="https://jsilva.github.io/assets/js/jquery.scrollzer.min.js"></script>
+			<script src="https://jsilva.github.io/assets/js/jquery.scrolly.min.js"></script>
+			<script src="https://jsilva.github.io/assets/js/skel.min.js"></script>
+			<script src="https://jsilva.github.io/assets/js/util.js"></script>
+			
+			<script src="https://jsilva.github.io/assets/js/main.js"></script>
+
+	</body>
+</html>
