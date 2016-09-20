@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<html>
+	
+	{{ partial "head.html" . }}
+	
+	<body>
+
+		<!-- Header -->
+			
+			{{ partial "sidebar.html" . }}
+			
+		<!-- Wrapper -->
+			<div id="wrapper">
+		<!-- Main -->
+			<div id="main">
+					{{ range (.Paginate (where .Data.Pages "Section" "==" "blog")).Pages }}
+				<section>
+					<div class="container">
+						<header class="major">
+							<h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+							<p>{{ .Date.Format "2 January 2006" }}</p>
+							{{ partial "post-taxonomy-list.html" . }}
+						</header>
+					</div>
+				</section>
+					{{ end }}
+				{{ partial "pagination.html" .Paginator }}
+			</div>
+
+			{{ partial "footer.html" . }}
+
+			</div>
+
+		<!-- Scripts -->
+		{{ partial "scripts.html" . }}
+
+	</body>
+</html>

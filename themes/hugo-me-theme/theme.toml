@@ -1,0 +1,15 @@
+name = "Me"
+license = "Creative Commons Attribution 3.0 Unported License"
+licenselink = "//github.com/aerohub/hugo-me-theme/blob/master/LICENSE.md"
+description = "Responsive Hugo theme for personal site"
+homepage = "//github.com/aerohub/hugo-me-theme"
+tags = ["personal", "portfolio", "color schemes", "blog"]
+min_version = 0.16
+
+[author]
+  name = "Pavel Kanyshev"
+  homepage = "//github.com/aerohub"
+
+# If porting an existing theme
+[original]
+  repo = "//html5up.net/read-only"

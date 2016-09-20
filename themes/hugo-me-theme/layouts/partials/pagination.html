@@ -1,0 +1,13 @@
+						<section>
+						<div class="container">
+						<ul class="actions">
+							{{if .HasNext}}
+								<li><a href="{{ .Next.URL }}" class="button special">Older Posts</a></li>
+							{{ end }}
+								<li><span class="button special disabled">Page {{ .PageNumber }} of {{.TotalPages}}</span></li>
+							{{if .HasPrev}}
+								<li><a href="{{ .Prev.URL }}" class="button special">Newer Posts</a></li>
+							{{ end }}
+						</ul>
+						</div>
+						</section>

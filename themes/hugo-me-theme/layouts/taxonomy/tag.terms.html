@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<html>
+	
+	{{ partial "head.html" . }}
+	
+	<body>
+
+		<!-- Header -->
+			
+			{{ partial "sidebar.html" . }}
+			
+		<!-- Wrapper -->
+			<div id="wrapper">
+		<!-- Main -->
+			<div id="main">
+				<section>
+					<div class="container">
+						<header class="major">
+							<h2>{{ .Title }}</h2>
+							<p>Ordered alphabetically</p>
+						</header>
+							<ul class="actions small">
+							{{ $data := .Data }}
+							{{ range $key, $value := .Data.Terms.Alphabetical }}
+							
+							<li><a href="{{ $value.Name | urlize }}" class="button small icon fa-tag">{{ $value.Name }} {{ $value.Count }}</a></li>
+							
+							
+							{{ end }}
+							</ul>
+					</div>
+				</section>
+			</div>
+
+			{{ partial "footer.html" . }}
+
+			</div>
+
+		<!-- Scripts -->
+		{{ partial "scripts.html" . }}
+
+	</body>
+</html>

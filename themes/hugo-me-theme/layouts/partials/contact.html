@@ -1,0 +1,27 @@
+							<section>
+								<div class="container">
+									<header class="major">
+									<h2>{{ .Site.Params.contact.title }}</h2>
+									<p>{{ with .Site.Params.contact.intro }}{{ . | markdownify }}{{ end }}</p>
+									<form method="post" action="//formspree.io/{{ with .Site.Params.email }}{{.}}{{ end }}" novalidate>
+										<div class="row uniform">
+											<div class="6u 12u(xsmall)"><input type="text" name="name" required data-validation-required-message="{{ with .Site.Params.contact.form.name.warning }}{{ . | markdownify}}{{ end }}" id="name" placeholder="{{ with .Site.Params.contact.form.name.text }}{{ .  | markdownify }}{{ end }}" /></div>
+											<div class="6u 12u(xsmall)"><input type="email" name="email" required data-validation-required-message="{{ with .Site.Params.contact.form.email.warning }}{{ . | markdownify }}{{ end }}" id="email" placeholder="{{ with .Site.Params.contact.form.email.text }}{{ . | markdownify }}{{ end }}" /></div>
+										</div>
+										<div class="row uniform">
+											<div class="12u"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
+										</div>
+										<div class="row uniform">
+											<div class="12u"><textarea name="message" required data-validation-required-message="{{ with .Site.Params.contact.form.message.warning }}{{ . | markdownify }}{{ end }}" id="message" placeholder="{{ with .Site.Params.contact.form.message.text }}{{ . | markdownify }}{{ end }}" rows="6"></textarea></div>
+										</div>
+										<div class="row uniform">
+											<div class="12u">
+												<ul class="actions">
+													<li><input type="submit" class="special" value="{{ .Site.Params.contact.buttonText }}" /></li>
+													<li><input type="reset" value="{{ .Site.Params.contact.resetText }}" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
+							</section>
