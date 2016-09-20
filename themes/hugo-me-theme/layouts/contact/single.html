@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+<html>
+	
+	{{ partial "head.html" . }}
+	
+	<body>
+
+		<!-- Header -->
+			
+			{{ partial "sidebar.html" . }}
+			
+		<!-- Wrapper -->
+			<div id="wrapper">
+		<!-- Main -->
+			<div id="main">
+
+			{{ partial "contact.html" . }}
+
+			</div>
+
+			{{ partial "footer.html" . }}
+
+			</div>
+
+		<!-- Scripts -->
+		{{ partial "scripts.html" . }}
+
+	</body>
+</html>

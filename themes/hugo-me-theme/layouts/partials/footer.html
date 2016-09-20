@@ -1,0 +1,7 @@
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>{{ .Now.Year }} &copy; {{ with .Site.Params.footer.copyright }}{{ . | markdownify }}{{ end }}</li>
+							</ul>
+						</div>
+					</section>

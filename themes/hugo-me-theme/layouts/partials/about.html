@@ -1,0 +1,9 @@
+							<section>
+								<div class="container">
+									<header class="major">
+										<h2>{{ .Site.Params.about.title }}</h2>
+										<p>{{ with .Site.Params.about.intro }}{{ . | markdownify }}{{ end }}</p>
+									</header>
+									{{ with .Site.Params.about.text }}{{ . | markdownify }}{{ end }}
+								</div>
+							</section>
